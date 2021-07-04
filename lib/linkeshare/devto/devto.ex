@@ -1,4 +1,4 @@
-defmodule DevToApi.Client do
+defmodule Linkeshare.DevTo do
   @moduledoc """
   Integration with DevTo API
   https://docs.microsoft.com/pt-br/linkedin/consumer
