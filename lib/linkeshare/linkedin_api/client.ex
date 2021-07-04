@@ -14,15 +14,8 @@ defmodule LinkedinApi.Client do
   plug Tesla.Middleware.Headers, [{"authorization", "Bearer #{access_token()}"}]
 
   @spec share_article(map) :: {:error, any} | {:ok, String.t() | Tesla.Env.t()}
-  def share_article(params) do
-    params
-    |> format_body()
-    |> post_share_article()
-    |> handle_response()
-  end
-
-  defp format_body(%{"title" => title, "url" => url, "service" => service}) do
-    %{
+  def share_article(%{title: title, url: url, service: service}) do
+    body = %{
       "author" => "urn:li:person:#{author_id()}",
       "lifecycleState" => "PUBLISHED",
       "specificContent" => %{
@@ -50,9 +43,10 @@ defmodule LinkedinApi.Client do
         "com.linkedin.ugc.MemberNetworkVisibility" => "PUBLIC"
       }
     }
-  end
 
-  defp post_share_article(body), do: post("/ugcPosts", body)
+    post("/ugcPosts", body)
+    |> handle_response()
+  end
 
   defp handle_response({:ok, %Tesla.Env{status: 201}}), do: {:ok, "Created"}
   defp handle_response({:ok, _result} = result), do: result
