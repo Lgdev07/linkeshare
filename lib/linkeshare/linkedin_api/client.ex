@@ -22,7 +22,7 @@ defmodule LinkedinApi.Client do
         "com.linkedin.ugc.ShareContent" => %{
           "shareCommentary" => %{
             "text" =>
-              "Acabei de criar um artigo no #{service}, falando sobre #{title}, confere lá 😁"
+              "Acabei de criar um artigo no #{service} falando sobre #{title}, confere lá 😁"
           },
           "shareMediaCategory" => "ARTICLE",
           "media" => [
