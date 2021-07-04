@@ -7,6 +7,8 @@ defmodule LinkeshareWeb.DevToController do
 
   @spec create(Plug.Conn.t(), any) :: Plug.Conn.t()
   def create(conn, params) do
+    Logger.info(conn.req_headers)
+
     params
     |> DevTo.share()
     |> handle_response(conn)
