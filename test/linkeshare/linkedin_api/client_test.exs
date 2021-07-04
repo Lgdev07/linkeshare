@@ -12,11 +12,13 @@ defmodule LinkedinApi.ClientTest do
       Mock
       |> expect(:call, &response_200/2)
 
-      assert {:ok, result} = Client.share_article(%{
-        title: "Test Title",
-        url: "Test Url",
-        service: "Test Service",
-      })
+      assert {:ok, result} =
+               Client.share_article(%{
+                 title: "Test Title",
+                 url: "Test Url",
+                 service: "Test Service"
+               })
+
       assert Map.get(result, :status) == 200
     end
 
@@ -24,11 +26,13 @@ defmodule LinkedinApi.ClientTest do
       Mock
       |> expect(:call, &response_401/2)
 
-      assert {:error, result} = Client.share_article(%{
-        title: "Test Title",
-        url: "Test Url",
-        service: "Test Service",
-      })
+      assert {:error, result} =
+               Client.share_article(%{
+                 title: "Test Title",
+                 url: "Test Url",
+                 service: "Test Service"
+               })
+
       assert Map.get(result, :status) == 401
     end
   end

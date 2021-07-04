@@ -27,8 +27,6 @@ config :linkeshare, :linkedin,
   author_id: System.get_env("LINKEDIN_AUTHOR_ID"),
   access_token: System.get_env("LINKEDIN_ACCESS_TOKEN")
 
-config :tesla, LinkedinApi.Client, adapter: LinkedinApi.Client.Adapter.Mock
-
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

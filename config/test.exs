@@ -8,3 +8,5 @@ config :linkeshare, LinkeshareWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :tesla, LinkedinApi.Client, adapter: LinkedinApi.Client.Adapter.Mock

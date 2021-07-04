@@ -1,19 +1,21 @@
 defmodule LinkeshareWeb.Support.DevToSupport do
-
+  @moduledoc false
 
   def response_200(
-    %{method: :post, url: "https://api.linkedin.com/v2/ugcPosts"}, _opts
+        %{method: :post, url: "https://api.linkedin.com/v2/ugcPosts"},
+        _opts
       ) do
-        {:ok, %Tesla.Env{status: 200, body: %{"id" =>  "urn:li:share:1"}}}
-    end
+    {:ok, %Tesla.Env{status: 200, body: %{"id" => "urn:li:share:1"}}}
+  end
 
   def response_401(
-    %{method: :post, url: "https://api.linkedin.com/v2/ugcPosts"}, _opts
+        %{method: :post, url: "https://api.linkedin.com/v2/ugcPosts"},
+        _opts
       ) do
-        {:error, %Tesla.Env{status: 401, body: %{"status" => "failed"}}}
-    end
+    {:error, %Tesla.Env{status: 401, body: %{"status" => "failed"}}}
+  end
 
-    def devto_post_body do
+  def devto_post_body do
     %{
       "data" => %{
         "attributes" => %{
@@ -47,10 +49,8 @@ defmodule LinkeshareWeb.Support.DevToSupport do
                     "attributes" => %{
                       "github_username" => "test",
                       "name" => "Test Test",
-                      "profile_image" =>
-                        "Test Test",
-                      "profile_image_90" =>
-                        "Test Test",
+                      "profile_image" => "Test Test",
+                      "profile_image_90" => "Test Test",
                       "twitter_username" => nil,
                       "username" => "test",
                       "website_url" => nil
@@ -71,5 +71,4 @@ defmodule LinkeshareWeb.Support.DevToSupport do
       }
     }
   end
-
 end
