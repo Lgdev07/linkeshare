@@ -3,12 +3,12 @@ defmodule LinkeshareWeb.DevToController do
 
   require Logger
 
-  alias DevToApi.Client
+  alias Linkeshare.DevTo
 
   @spec create(Plug.Conn.t(), any) :: Plug.Conn.t()
   def create(conn, params) do
     params
-    |> Client.share()
+    |> DevTo.share()
     |> handle_response(conn)
   end
 
@@ -21,7 +21,6 @@ defmodule LinkeshareWeb.DevToController do
   defp handle_response({:error, _response}, conn) do
     conn
     |> put_status(:service_unavailable)
-    |> put_resp_header("Retry-After", 120)
     |> text("")
   end
 end
